@@ -38,8 +38,17 @@ func CreatePaste(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{"error": "invalid content type"})
 	}
 
+	var id string
+	for id == "" {
+		tempID := key_generators.GetKeyGenerator("random")()
+		result := database.DB.First(&model.PasteModel{ID: tempID})
+		if result.RowsAffected > 0 {
+			id = tempID
+		}
+	}
+
 	paste := model.PasteModel{
-		ID:        key_generators.GetKeyGenerator("random")(),
+		ID: id,
 		PasteBase: pasteData,
 		Timestamp: time.Now(),
 	}
@@ -53,8 +62,8 @@ func GetPaste(c *fiber.Ctx) error {
 	id := c.Params("id")
 
 	var paste model.PasteModel
-	database.DB.First(&paste, &model.PasteModel{ID: id})
-	if paste.ID != id {
+	result := database.DB.First(&paste, &model.PasteModel{ID: id})
+	if result.RowsAffected < 1 {
 		c.Status(404)
 		return c.JSON(fiber.Map{"error": "paste not found"})
 	}
@@ -65,8 +74,8 @@ func GetRawPaste(c *fiber.Ctx) error {
 	id := c.Params("id")
 
 	var paste model.PasteModel
-	database.DB.First(&paste, &model.PasteModel{ID: id})
-	if paste.ID != id {
+	result := database.DB.First(&paste, &model.PasteModel{ID: id})
+	if result.RowsAffected < 1 {
 		c.Status(404)
 		return c.JSON(fiber.Map{"error": "paste not found"})
 	}
