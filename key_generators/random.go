@@ -5,12 +5,14 @@ import (
 	"gobin/model"
 	"math"
 	"math/rand"
+	"time"
 )
 
 const KeySpace = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 const Length = 10
 
 func GenerateRandomKey() string {
+	rand.Seed(time.Now().UnixNano())
 	var result string
 	for i := 0;i < Length;i++ {
 		result += string(KeySpace[rand.Intn(len(KeySpace))])

@@ -38,11 +38,11 @@ func CreatePaste(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{"error": "invalid content type"})
 	}
 
-	var id string
+	id := ""
 	for id == "" {
 		tempID := key_generators.GetKeyGenerator("random")()
-		result := database.DB.First(&model.PasteModel{ID: tempID})
-		if result.RowsAffected > 0 {
+		result := database.DB.Find(&model.PasteModel{ID: tempID})
+		if result.RowsAffected < 1 {
 			id = tempID
 		}
 	}
