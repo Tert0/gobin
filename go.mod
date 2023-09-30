@@ -9,7 +9,7 @@ require (
 	github.com/joho/godotenv v1.3.0
 	gorm.io/driver/mysql v1.1.2
 	gorm.io/driver/postgres v1.1.1
-	gorm.io/driver/sqlite v1.1.5
+	gorm.io/driver/sqlite v1.5.3
 	gorm.io/gorm v1.25.4
 )
 
@@ -27,7 +27,7 @@ require (
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/klauspost/compress v1.13.4 // indirect
-	github.com/mattn/go-sqlite3 v1.14.8 // indirect
+	github.com/mattn/go-sqlite3 v1.14.17 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.29.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
