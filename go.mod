@@ -3,7 +3,7 @@ module gobin
 go 1.17
 
 require (
-	github.com/gofiber/fiber/v2 v2.52.1
+	github.com/gofiber/fiber/v2 v2.52.2
 	github.com/gofiber/jwt/v2 v2.2.7
 	github.com/golang-jwt/jwt/v4 v4.5.0
 	github.com/joho/godotenv v1.5.1
